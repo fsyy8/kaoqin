@@ -1,0 +1,12 @@
+.demo-content{
+	z-index: 9;
+}
+.commentBox{
+	margin-top: 100px;
+}
+/*#commentForm{
+	width: 800px;
+}
+#commentForm textarea,#commentForm label{
+	width: 100%;
+}*/

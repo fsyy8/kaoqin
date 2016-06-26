@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/login.css"/>
+</head>
+<body>
+<h1>尊敬的管理员，欢迎您！</h1>
+<form id="myForm">
+    修改考勤总次数：<input type="number" name="kaoqinTotal"/>
+	<!-- <input type="button" value="增加" id="addSetting"/> -->
+	<input type="button" value="修改" id="editSetting"/>
+</form>
+<a href="#" id="random">获取随机数</a>
+<br><br>
+以下是考勤所用数字
+<br>
+<%= kaoqinNumbers %>
+
+<script src="/js/jquery.js"></script>
+<script>
+$(document).ready(function() {
+	$("#addSetting").click(function() {
+		$.ajax({
+			url: '/addSetting',
+			type: 'POST',
+			dataType: 'json',
+			data: $("#myForm").serialize(),
+		})
+		.done(function() {
+			console.log("success");
+		})
+		.fail(function() {
+			console.log("error");
+		})
+		.always(function() {
+			console.log("complete");
+		});			
+	});
+	$("#editSetting").click(function() {
+		$.ajax({
+			url: '/editSetting',
+			type: 'POST',
+			dataType: 'json',
+			data: $("#myForm").serialize(),
+		})
+		.done(function() {
+			console.log("success");
+		})
+		.fail(function() {
+			console.log("error");
+		})
+		.always(function() {
+			console.log("complete");
+		});		
+	});
+	$("#random").click(function(){
+		// alert("sb");
+		$.ajax({
+			url: '/randomNumber',
+			type: 'GET',
+			dataType: 'json',
+		})
+		.done(function() {
+			console.log("success");
+		})
+		.fail(function() {
+			console.log("error");
+		})
+		.always(function() {
+			console.log("complete");
+		});		
+	});
+});
+</script>
+</body>
+</html>

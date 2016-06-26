@@ -1,0 +1,61 @@
+.piechart>span{
+	font-size:20px;
+	text-align: center;
+	width: 100%;
+	line-height: 40px;
+	display: block;
+}
+.piechart{
+	padding: 0 25px;
+	position: relative;
+}
+.pieChartBox{
+	position: absolute;
+	margin: auto;
+	width: 150px;
+	height: 80px;
+	line-height: 80px;
+	z-index: 0;
+	font-size: 60px;
+	display: block;
+	font-weight: bold;
+	top: 50%;
+	left: 50%;
+	margin-top:-55px;
+	margin-left: -45px;
+}
+.pieChartBox2{
+	font-size:48px;
+}
+.pieChartBox span{
+	font-size: 30px;
+	text-align: left;
+	display: inline;
+}
+.pieCanvas{
+	width: 100%;
+	height: 100%;
+}
+.lineChart{
+	padding: 10px 20px;
+	position: relative;
+}
+.lineCanvas{
+	width: 100%;
+}
+@media screen and (max-width: 500px) {
+    .pieChartBox{
+    	font-size: 36px;
+    	margin-left: -30px;
+    	margin-top:-60px;
+    }
+    .pieChartBox span{
+    	font-size: 20px;
+    }
+    .pieChartBox2{
+		font-size:32px;
+	}
+	.piechart>span{
+		font-size: 16px;
+	}
+}

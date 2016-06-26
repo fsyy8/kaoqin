@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="基于课程的学习效率评价与分析系统byZJC">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>基于课程的学习效率评价与分析系统</title>
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/android-desktop.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+    <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/material-design-icons/2.2.3/iconfont/material-icons.css">
+    <link rel="stylesheet" href="css/material.css">
+    <link rel="stylesheet" href="css/styles-demo.css">
+    <link rel="stylesheet" href="css/home.css">
+  </head>
+  <body>
+    <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+      <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title">欢迎页</span>
+          <div class="mdl-layout-spacer"></div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+            <div class="mdl-textfield__expandable-holder">
+              <input class="mdl-textfield__input" type="text" id="search">
+              <label class="mdl-textfield__label" for="search">Enter your query...</label>
+            </div>
+          </div>
+          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+            <i class="material-icons">more_vert</i>
+          </button>
+          <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
+            <li class="mdl-menu__item">关于我们（暂无）</li>
+            <li class="mdl-menu__item">使用帮助（暂无）</li>
+          </ul>
+        </div>
+      </header>
+      <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+        <header class="demo-drawer-header">
+          <img src="images/user.jpg" class="demo-avatar">
+          <div class="demo-avatar-dropdown">
+            <span>你好，<%= nickname %></span>
+            <div class="mdl-layout-spacer"></div>
+            <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+              <i class="material-icons" role="presentation">arrow_drop_down</i>
+              <span class="visuallyhidden">Accounts</span>
+            </button>
+            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+	            <a class="mdl-menu__item" href="/logout">注销</a>
+            </ul>
+          </div>
+        </header>
+       <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+          <a class="mdl-navigation__link" href="/home"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>欢迎页</a>          
+          <a class="mdl-navigation__link" href="/kaoqin"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">report</i>考勤</a>
+          <a class="mdl-navigation__link" href="/notice"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flag</i>公告栏</a>
+          <a class="mdl-navigation__link" href="/feedback"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>教学反馈</a>
+          <div class="mdl-layout-spacer"></div>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i>帮助（暂无）</a>
+        </nav>
+      </div>
+<!--Main-->
+      <main class="mdl-layout__content mdl-color--grey-100">
+
+<!-- <h5>平时成绩：<%= pingshiScore %></h5>
+<h5>期末成绩：<%= qimoScore %></h5>
+<h5>考勤次数：<%= kaoqin %></h5>
+<h5>总考勤次数：<%= kaoqinTotal %></h5> -->
+
+        <div class="mdl-grid demo-content">
+          <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+            <div class="piechart demo-pie mdl-cell mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+              <div class="pieChartBox mdl-color-text--grey-600">
+                <%= kaoqin/kaoqinTotal*100 %><span>%</span>
+              </div>
+              <canvas class="pieCanvas" id="pieChart1" width=100 height=100></canvas>
+              <span class="mdl-color-text--grey-600">考勤完成率</span>             
+            </div>
+            <div class="piechart demo-pie mdl-cell mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+              <div class="pieChartBox mdl-color-text--grey-600">
+              <% var pingshiScoreAve = 0 %>
+              <% for(i=0;i<pingshiScore.length;i++){ %>
+                <% pingshiScoreAve = pingshiScoreAve + pingshiScore[i]/pingshiScore.length %>
+              <% } %>
+                <%= Math.ceil(pingshiScoreAve) %><span>分</span>
+              </div>
+              <canvas class="pieCanvas" id="pieChart2" width=100 height=100></canvas>
+              <span class="mdl-color-text--grey-600">作业平均分</span> 
+            </div>
+            <div class="piechart demo-pie mdl-cell mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+              <div class="pieChartBox mdl-color-text--grey-600">
+                <%= qimoScore %><span>分</span></div>
+              <canvas class="pieCanvas" id="pieChart3" width=100 height=100></canvas> 
+              <span class="mdl-color-text--grey-600">期末成绩</span> 
+            </div>
+            <div class="piechart demo-pie mdl-cell mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+              <div class="pieChartBox pieChartBox2 mdl-color-text--grey-600">优秀</div>
+              <canvas class="pieCanvas" id="pieChart4" width=100 height=100></canvas>
+              <span class="mdl-color-text--grey-600">综合评价</span> 
+            </div>
+          </div>
+
+          <div class="demo-graphs mdl-card mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
+              <div class="mdl-card__title  mdl-color--teal-300">
+                    <h2 class="mdl-card__title-text">作业成绩</h2>
+              </div>
+
+                <canvas class="lineCanvas" width=100 height=60></canvas>
+
+          </div>
+
+          <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
+            <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
+              <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
+                <h2 class="mdl-card__title-text"><%= notice.noticeTitle %></h2>
+              </div>
+              <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                <%= notice.noticeInfo %>
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <a href="/notice/<%= notice._id %>" class="mdl-button mdl-js-button mdl-js-ripple-effect">阅读更多</a>
+              </div>
+            </div>
+          <div class="demo-separator mdl-cell--1-col"></div>
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
+              <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
+                <h2 class="mdl-card__title-text">考勤号码录入</h2>
+              </div>
+              <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                <form id="kaoqinForm">
+        				  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        				    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4" name="kaoqinNumber">
+        				    <label class="mdl-textfield__label" for="sample4">请输入9位的考勤号码</label>
+        				    <span class="mdl-textfield__error">输入的不是数字!</span>
+        				  </div>
+        				</form>
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect" id="submitKaoqin">提交考勤</a>
+              </div>
+            </div>           
+<!--             <div class="demo-options mdl-card mdl-color--deep-purple-500 mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--12-col-desktop">
+              <div class="mdl-card__supporting-text mdl-color-text--blue-grey-50">
+                <h3>一个表单</h3>
+                <ul>
+                  <li>
+                    <label for="chkbox1" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                      <input type="checkbox" id="chkbox1" class="mdl-checkbox__input">
+                      <span class="mdl-checkbox__label">选项A</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label for="chkbox2" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                      <input type="checkbox" id="chkbox2" class="mdl-checkbox__input">
+                      <span class="mdl-checkbox__label">选项B</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label for="chkbox3" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                      <input type="checkbox" id="chkbox3" class="mdl-checkbox__input">
+                      <span class="mdl-checkbox__label">选项C</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label for="chkbox4" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                      <input type="checkbox" id="chkbox4" class="mdl-checkbox__input">
+                      <span class="mdl-checkbox__label">选项D</span>
+                    </label>
+                  </li>
+                </ul>
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--blue-grey-50">提交表单</a>
+                <div class="mdl-layout-spacer"></div>
+                <i class="material-icons">location_on</i>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="js/material.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/chart.js"></script>
+    <script src="js/home.js"></script>
+    <script>
+    $(function() {
+      drawPieChart(1,<%= kaoqin %>,<%= kaoqinTotal %>,"#ACEC00","#eafabf");
+      drawPieChart(2,<%= pingshiScoreAve %>,100,"#00BBD6","#bfeef5");
+      drawPieChart(3,<%= qimoScore %>,100,"#BA65C9","#eed8f1");
+      drawPieChart(4,9,10,"#EF3C79","#fbcedd");
+      drawLineChart([<%= pingshiScore %>],true);
+      $(window).resize(function() {
+        drawLineChart([<%= pingshiScore %>],false);
+      });
+    });
+    
+    </script>
+  </body>
+</html>

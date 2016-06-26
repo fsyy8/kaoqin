@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="基于课程的学习效率评价与分析系统byZJC">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>登录-基于课程的学习效率评价与分析系统</title>
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/android-desktop.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+    <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/material-design-icons/2.2.3/iconfont/material-icons.css">
+    <link rel="stylesheet" href="css/material.css">
+    <link rel="stylesheet" href="css/login.css">
+  </head>
+  <body>
+	<div class="layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
+	  <header class="mdl-layout__header  mdl-color--grey-100 mdl-color-text--grey-600">
+	    <div class="mdl-layout__header-row">
+	      <span class="mdl-layout-title">登录</span>
+	      <div class="mdl-layout-spacer"></div>
+	      <nav class="mdl-navigation">
+	        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+            <i class="material-icons">more_vert</i>
+          </button>
+          <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
+            <li class="mdl-menu__item">关于我们（暂无）</li>
+            <li class="mdl-menu__item">使用帮助（暂无）</li>
+          </ul>
+	      </nav>
+	    </div>
+	  </header>
+	  <main class="mdl-layout__content">
+	    <div class="page-content mdl-grid content">
+	        <div class="desktop-spacer mdl-cell--4-col-phone mdl-cell--12-col-desktop mdl-cell--8-col-tablet"></div>
+		    <div class="mdl-cell--4-col-desktop mdl-cell--2-col-tablet"></div>
+			<div class="login-card mdl-card mdl-shadow--2dp mdl-cell--4-col mdl-cell--5-col-tablet mdl-cell--middle">
+			  <div class="mdl-card__title mdl-card--expand mdl-color--teal-300 mdl-color-text--white">
+			    <h2 class="mdl-card__title-text">
+			    登录&nbsp;&nbsp;
+				    <span class="ceshishuoming">
+				    「测试账号：zhanghao<br>
+				    &nbsp;&nbsp;&nbsp;测试密码：mima」
+				    </span>
+			    </h2>
+			  </div>
+			  <div class="mdl-card__supporting-text">
+			    <form id="myForm">
+				  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				    <input class="mdl-textfield__input" type="text" id="username" value="zhanghao">
+				    <label class="mdl-textfield__label" name="username" for="username">账号</label>
+				  </div>
+				  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				    <input class="mdl-textfield__input" type="password" id="password" value="mima">
+				    <label class="mdl-textfield__label" name="password" for="password">密码</label>
+				  </div>
+				</form>
+			  </div>
+			  <div class="mdl-card__actions mdl-card--border">
+			    <a node-type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+			      登录
+			    </a>
+			    <!-- <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+			      （注册暂未开放）
+			    </a> -->
+			  </div>
+			</div>
+	    </div>
+	  </main>
+	  <footer class="mdl-mini-footer">
+		<div class="mdl-mini-footer__left-section">
+		  <div class="mdl-logo">基于课程的学习效率评价与分析系统</div>
+		    <ul class="mdl-mini-footer__link-list">
+		      <!-- <li><a href="/admin">点此进入管理员页面</a></li> -->
+		    </ul>
+		</div>
+	  </footer>
+	</div>
+    <script src="js/material.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/login.js"></script>
+  </body>
+</html>

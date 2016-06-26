@@ -1,0 +1,26 @@
+html, body {
+  font-family: "微软雅黑";
+}
+h1{
+    width: 100%;
+    text-align: center;
+    padding: 30px 0px;
+    color: #00B7FF;
+}
+.layout{
+	background: url('../images/banner-material.jpg') center / cover
+}
+.content{
+	max-width: 1400px;
+}
+.desktop-spacer{
+	height: 100px;
+}
+.ceshishuoming{
+	font-size: 16px;
+}
+.login-card{
+/*  position: absolute;
+  top: 50%; left: 50%; bottom: 0; right: 0;
+  transform: translate(-50%, -60%);*/
+}
